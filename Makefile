@@ -1,6 +1,12 @@
-.PHONY: examples
+.PHONY: view
 
-examples: $(foreach x,coverletter cv resume,examples/$x.pdf)
+#examples: $(foreach x,coverletter cv resume,examples/$x.pdf)
 
-%.pdf: %.tex
-	xelatex -output-directory=$(dir $@) $<
+view: resume
+	xdg-open resume.pdf
+
+resume: 
+	xelatex resume.tex
+
+#%.pdf: %.tex
+#	xelatex -output-directory=$(dir $@) $<
