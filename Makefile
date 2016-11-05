@@ -1,4 +1,4 @@
-.PHONY: view
+.PHONY: view, resume
 
 #examples: $(foreach x,coverletter cv resume,examples/$x.pdf)
 
