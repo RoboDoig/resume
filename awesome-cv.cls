@@ -49,7 +49,7 @@
 % Needed to make fixed length table
 \RequirePackage{array}
 % Needed to handle list environment
-\RequirePackage{enumitem}
+\RequirePackage[inline]{enumitem}
 % Needed to handle text alignment
 \RequirePackage{ragged2e}
 % Needed to configure page layout
@@ -230,7 +230,7 @@
 \newcommand*{\entrypositionstyle}[1]{{\fontsize{8pt}{1em}\bodyfont\scshape\color{graytext} #1}}
 \newcommand*{\entrydatestyle}[1]{{\fontsize{8pt}{1em}\bodyfontlight\slshape\color{graytext} #1}}
 \newcommand*{\entrylocationstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\slshape\color{awesome} #1}}
-\newcommand*{\descriptionstyle}[1]{{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text} #1}}
+\newenvironment{descriptionstyle}{\fontsize{9pt}{1em}\bodyfontlight\upshape\color{text}}{}
 
 % For elements of subentry
 \newcommand*{\subentrytitlestyle}[1]{{\fontsize{8pt}{1em}\bodyfont\mdseries\color{graytext} #1}}
@@ -542,8 +542,22 @@
       {\entrypositionstyle{#1} & \entrydatestyle{#4} \\}
       {\entrytitlestyle{#2} & \entrylocationstyle{#3} \\
       \entrypositionstyle{#1} & \entrydatestyle{#4} \\}
-    \multicolumn{2}{L{\textwidth}}{\descriptionstyle{#5}}
+    \multicolumn{2}{L{\textwidth}}{\begin{descriptionstyle}#5\end{descriptionstyle}}
   \end{tabular*}%
+}
+
+% Define an environment for cventryskill
+\newenvironment{cventryskills}{%
+  \vspace{-5.0mm}
+  \begin{justify}
+  \begin{descriptionstyle}
+  \faPencil\enspace
+      \begin{enumerate*}[label={}, itemjoin={~$\cdot$~}, afterlabel={},]
+}{%
+  \end{enumerate*}
+  \end{descriptionstyle}
+  \end{justify}
+  \vspace{2.0mm}
 }
 
 % Define an environment for cvsubentry
