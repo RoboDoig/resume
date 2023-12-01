@@ -545,6 +545,15 @@
 }{%
   \end{center}
 }
+
+% Define an environment for cvbullet
+\newenvironment{cvbullets}{%
+  \vspace{\acvSectionContentTopSkip}
+  \vspace{2mm}
+}{%
+  \vspace{2mm}
+}
+
 % Define an entry of cv information
 % Usage: \cventry{<position>}{<title>}{<location>}{<date>}{<description>}
 \newcommand*{\cventry}[5]{%
